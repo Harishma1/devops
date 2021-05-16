@@ -20,6 +20,7 @@ pipeline {
         }
 				
 	stage('Test') { 
+		agent any
             steps {
                 sh 'mvn test' 
             }
@@ -32,7 +33,7 @@ pipeline {
 		stage('MetricCheck') {
 		agent any
             steps {
-                sh 'mvn cobertura:cobertura -Dcobertura.report.format=xml'
+                sh 'mvn cobertura:cobertura -Dcobertura.report.format-xml'
             }
         }
 	stage('package') { 
